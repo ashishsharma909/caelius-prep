@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caelius Consulting — Complete Interview Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f10;
+    --surface: #161618;
+    --surface2: #1e1e21;
+    --border: #2a2a2e;
+    --border2: #363639;
+    --text: #e8e8ea;
+    --muted: #7a7a82;
+    --accent: #5b7fff;
+    --accent2: #7c3aed;
+    --green: #22c55e;
+    --amber: #f59e0b;
+    --red: #ef4444;
+    --teal: #14b8a6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  /* SIDEBAR */
+  .sidebar {
+    position: fixed; left: 0; top: 0; bottom: 0;
+    width: 240px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    z-index: 100;
+    padding: 24px 0;
+  }
+  .sidebar-logo {
+    padding: 0 20px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+  .sidebar-logo .company { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .sidebar-logo .title { font-size: 16px; font-weight: 600; color: var(--text); margin-top: 2px; }
+  .sidebar-logo .date { font-size: 11px; color: var(--amber); margin-top: 4px; }
+  .nav-section { padding: 8px 20px 4px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .nav-item {
+    display: block; padding: 8px 20px; font-size: 13px; color: var(--muted);
+    text-decoration: none; cursor: pointer; transition: all 0.15s;
+    border-left: 2px solid transparent;
+  }
+  .nav-item:hover { color: var(--text); background: var(--surface2); }
+  .nav-item.active { color: var(--accent); border-left-color: var(--accent); background: rgba(91,127,255,0.07); }
+  /* MAIN */
+  .main { margin-left: 240px; max-width: 900px; padding: 48px 48px 100px; }
+  /* HERO */
+  .hero {
+    padding: 48px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+  .hero-tag { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 12px; }
+  .hero h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 48px; line-height: 1.15;
+    color: var(--text); margin-bottom: 16px;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero p { color: var(--muted); font-size: 15px; max-width: 580px; line-height: 1.7; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .chip {
+    padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500;
+    border: 1px solid;
+  }
+  .chip-blue { color: #93bbff; border-color: rgba(91,127,255,0.35); background: rgba(91,127,255,0.1); }
+  .chip-green { color: #86efac; border-color: rgba(34,197,94,0.35); background: rgba(34,197,94,0.08); }
+  .chip-amber { color: #fcd34d; border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.08); }
+  .chip-red { color: #fca5a5; border-color: rgba(239,68,68,0.35); background: rgba(239,68,68,0.08); }
+  /* SECTIONS */
+  .section { margin-bottom: 64px; }
+  .section-header { margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+  .section-num { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+  .section-title { font-family: 'Instrument Serif', serif; font-size: 32px; color: var(--text); }
+  /* TOPIC CARDS */
+  .topic-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .topic-header {
+    padding: 16px 20px; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background 0.15s;
+  }
+  .topic-header:hover { background: var(--surface2); }
+  .topic-title { font-size: 15px; font-weight: 500; color: var(--text); }
+  .topic-meta { display: flex; align-items: center; gap: 8px; }
+  .priority { font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 6px; }
+  .p-critical { background: rgba(239,68,68,0.15); color: #fca5a5; }
+  .p-high { background: rgba(245,158,11,0.15); color: #fcd34d; }
+  .p-bonus { background: rgba(91,127,255,0.15); color: #93bbff; }
+  .chevron { color: var(--muted); font-size: 14px; transition: transform 0.2s; }
+  .chevron.open { transform: rotate(180deg); }
+  .topic-body {
+    display: none; padding: 0 20px 20px;
+    border-top: 1px solid var(--border);
+  }
+  .topic-body.open { display: block; }
+  /* CONTENT BLOCKS */
+  .block-title { font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin: 20px 0 8px; }
+  .prose { font-size: 14px; color: #b0b0b8; line-height: 1.8; }
+  .prose + .prose { margin-top: 10px; }
+  code, .code-block {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .code-block {
+    background: #0a0a0c;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 12.5px;
+    color: #a8b5c8;
+    margin: 12px 0;
+    line-height: 1.65;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .code-block .c { color: #5a6580; }
+  .code-block .kw { color: #93bbff; }
+  .code-block .cl { color: #7dd3c0; }
+  .code-block .str { color: #86efac; }
+  .code-block .num { color: #fcd34d; }
+  .callout {
+    border-radius: 8px; padding: 12px 16px;
+    font-size: 13px; line-height: 1.7;
+    margin: 12px 0;
+  }
+  .callout-blue { background: rgba(91,127,255,0.1); border-left: 3px solid var(--accent); color: #c0ccff; }
+  .callout-green { background: rgba(34,197,94,0.08); border-left: 3px solid var(--green); color: #86efac; }
+  .callout-amber { background: rgba(245,158,11,0.08); border-left: 3px solid var(--amber); color: #fcd34d; }
+  .callout strong { font-weight: 600; }
+  table.comp {
+    width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0;
+  }
+  table.comp th {
+    text-align: left; padding: 8px 12px;
+    background: var(--surface2); color: var(--muted);
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--border);
+  }
+  table.comp td {
+    padding: 10px 12px; border-bottom: 1px solid var(--border);
+    color: #b0b0b8; vertical-align: top; line-height: 1.6;
+  }
+  table.comp tr:last-child td { border-bottom: none; }
+  table.comp td:first-child { color: var(--text); font-weight: 500; }
+  /* Q&A */
+  .qa-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .qa-q {
+    padding: 14px 18px; cursor: pointer;
+    display: flex; gap: 12px; align-items: flex-start;
+    transition: background 0.15s;
+  }
+  .qa-q:hover { background: var(--surface2); }
+  .qa-num { font-size: 11px; font-weight: 600; color: var(--muted); min-width: 24px; padding-top: 2px; }
+  .qa-text { font-size: 14px; color: var(--text); flex: 1; line-height: 1.5; }
+  .qa-tag { font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 4px; white-space: nowrap; align-self: center; }
+  .qa-answer {
+    display: none; padding: 14px 18px 16px 54px;
+    border-top: 1px solid var(--border);
+    font-size: 13.5px; color: #9a9ab0; line-height: 1.8;
+    background: rgba(0,0,0,0.2);
+  }
+  .qa-answer.open { display: block; }
+  .qa-answer strong { color: var(--text); font-weight: 500; }
+  .qa-answer .sample {
+    background: rgba(91,127,255,0.08);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    padding: 10px 14px; margin-top: 10px;
+    font-size: 13px; color: #c0ccff; line-height: 1.7;
+    font-style: italic;
+  }
+  /* PROCESS */
+  .round-card {
+    display: flex; gap: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 12px;
+  }
+  .round-num {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 600; flex-shrink: 0;
+    background: var(--surface2); color: var(--muted);
+    border: 1px solid var(--border2);
+  }
+  .round-num.key { background: rgba(91,127,255,0.15); color: var(--accent); border-color: rgba(91,127,255,0.3); }
+  .round-content { flex: 1; }
+  .round-title { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+  .round-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .round-tips { margin-top: 10px; font-size: 13px; color: #b0b0b8; line-height: 1.7; }
+  /* PROJECTS SECTION */
+  .proj-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 14px;
+  }
+  .proj-name { font-size: 16px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .proj-sub { font-size: 12px; color: var(--teal); margin-bottom: 12px; }
+  .proj-point { font-size: 13.5px; color: #b0b0b8; line-height: 1.7; padding: 4px 0; border-bottom: 1px solid var(--border); }
+  .proj-point:last-child { border-bottom: none; }
+  /* SCROLLSPY */
+  .progress-bar-top {
+    position: fixed; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transform-origin: left; z-index: 999;
+    transition: transform 0.1s;
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; padding: 24px 20px 80px; }
+    .hero h1 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar-top" id="progress"></div>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="company">Placement Prep</div>
+    <div class="title">Caelius Consulting</div>
+    <div class="date">Drive: 13 April 2026</div>
+  </div>
+  <div class="nav-section">Core Topics</div>
+  <a class="nav-item active" href="#oop" onclick="setActive(this)">Java & OOP</a>
+  <a class="nav-item" href="#api" onclick="setActive(this)">REST APIs & HTTP</a>
+  <a class="nav-item" href="#json" onclick="setActive(this)">JSON & XML</a>
+  <a class="nav-item" href="#soa" onclick="setActive(this)">SOA & Message Queues</a>
+  <a class="nav-item" href="#collections" onclick="setActive(this)">Java Collections & DSA</a>
+  <div class="nav-section">Salesforce Track</div>
+  <a class="nav-item" href="#salesforce" onclick="setActive(this)">Salesforce Basics</a>
+  <a class="nav-item" href="#mulesoft" onclick="setActive(this)">MuleSoft</a>
+  <div class="nav-section">Interview</div>
+  <a class="nav-item" href="#process" onclick="setActive(this)">Interview Rounds</a>
+  <a class="nav-item" href="#projects" onclick="setActive(this)">Your Projects</a>
+  <a class="nav-item" href="#questions" onclick="setActive(this)">All Q&A (50+)</a>
+  <a class="nav-item" href="#soft" onclick="setActive(this)">HR & Managerial</a>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="hero" id="top">
+    <div class="hero-tag">Complete Interview Preparation Guide</div>
+    <h1>Get the job at<br><em>Caelius Consulting</em></h1>
+    <p>Everything you need — Java, OOP, REST APIs, SOA, Salesforce, MuleSoft, and 50+ interview questions with model answers. Prepared specifically for the Associate Solution Consultant role.</p>
+    <div class="chips">
+      <span class="chip chip-red">Java & OOP — Critical</span>
+      <span class="chip chip-amber">REST + APIs — High Priority</span>
+      <span class="chip chip-blue">Salesforce — Preferred Skill</span>
+      <span class="chip chip-green">Drive: 13 April 2026</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ OOP ═══════════════════════════════ -->
+  <section class="section" id="oop">
+    <div class="section-header">
+      <div class="section-num">01 — Core Technical</div>
+      <div class="section-title">Java & Object-Oriented Programming</div>
+    </div>
+
+    <!-- Pillar 1 -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-title">The 4 Pillars of OOP</span>
+        <div class="topic-meta"><span class="priority p-critical">Must Know</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="topic-body open">
+        <div class="callout callout-blue">OOP is a programming style where you model real-world things as <strong>objects</strong>. An object has <strong>attributes</strong> (what it has) and <strong>methods</strong> (what it can do). Example: a Car object has color and speed (attributes), and can accelerate and brake (methods).</div>
+
+        <div class="block-title">1. Encapsulation — Hiding internal data</div>
+        <div class="prose">Wrapping data (variables) and methods inside a class, and restricting direct access to the data from outside. You expose only what is necessary through public methods (getters/setters). Think of a bank account — you cannot directly change the balance; you must go through the deposit() or withdraw() methods.</div>
+        <div class="code-block"><span class="kw">class</span> <span class="cl">BankAccount</span> {
+    <span class="kw">private</span> <span class="kw">double</span> balance; <span class="c">// hidden from outside</span>
+
+    <span class="kw">public double</span> getBalance() {
+        <span class="kw">return</span> balance; <span class="c">// controlled access</span>
+    }
+
+    <span class="kw">public void</span> deposit(<span class="kw">double</span> amount) {
+        <span class="kw">if</span> (amount > <span class="num">0</span>) balance += amount; <span class="c">// validation inside</span>
+    }
+}</div>
+        <div class="callout callout-green"><strong>Interview answer:</strong> "Encapsulation protects data integrity. By making variables private and providing controlled access through methods, we prevent invalid states — for example, you can't set a negative balance directly."</div>
+
+        <div class="block-title">2. Inheritance — Reusing existing code</div>
+        <div class="prose">A child class inherits attributes and methods from a parent class using the <code>extends</code> keyword. This avoids code duplication and models "is-a" relationships. A Dog IS-A Animal, so Dog can inherit all Animal behaviors and add its own.</div>
+        <div class="code-block"><span class="kw">class</span> <span class="cl">Animal</span> {
+    <span class="kw">String</span> name;
+    <span class="kw">void</span> eat() { System.out.println(name + <span class="str">" is eating"</span>); }
+}
+
+<span class="kw">class</span> <span class="cl">Dog</span> <span class="kw">extends</span> <span class="cl">Animal</span> {
+    <span class="kw">void</span> bark() { System.out.println(<span class="str">"Woof!"</span>); }
+}
+
+<span class="c">// Dog inherits eat() automatically</span>
+<span class="cl">Dog</span> d = <span class="kw">new</span> <span class="cl">Dog</span>();
+d.name = <span class="str">"Bruno"</span>;
+d.eat();  <span class="c">// inherited from Animal</span>
+d.bark(); <span class="c">// Dog's own method</span></div>
+
+        <div class="block-title">3. Polymorphism — Same interface, different behavior</div>
+        <div class="prose">Poly = many, morphism = forms. One method name behaves differently depending on the context. Two types:</div>
+        <div class="prose"><strong>Method Overloading (Compile-time):</strong> Same method name, different parameters in the same class.</div>
+        <div class="prose"><strong>Method Overriding (Runtime):</strong> Child class provides its own version of a parent class method.</div>
+        <div class="code-block"><span class="c">// Overloading — same class, different params</span>
+<span class="kw">class</span> <span class="cl">Calculator</span> {
+    <span class="kw">int</span> add(<span class="kw">int</span> a, <span class="kw">int</span> b) { <span class="kw">return</span> a + b; }
+    <span class="kw">double</span> add(<span class="kw">double</span> a, <span class="kw">double</span> b) { <span class="kw">return</span> a + b; }
+}
+
+<span class="c">// Overriding — child redefines parent's method</span>
+<span class="kw">class</span> <span class="cl">Animal</span> { <span class="kw">void</span> sound() { System.out.println(<span class="str">"..."</span>); } }
+<span class="kw">class</span> <span class="cl">Cat</span> <span class="kw">extends</span> <span class="cl">Animal</span> {
+    @Override
+    <span class="kw">void</span> sound() { System.out.println(<span class="str">"Meow"</span>); }
+}</div>
+
+        <div class="block-title">4. Abstraction — Hiding complexity</div>
+        <div class="prose">Showing only the essential features and hiding implementation details. When you drive a car, you use the steering wheel and pedals — you don't need to know how the engine works. Achieved through Abstract classes and Interfaces.</div>
+        <div class="code-block"><span class="kw">abstract class</span> <span class="cl">Shape</span> {
+    <span class="kw">abstract double</span> area(); <span class="c">// no implementation here</span>
+    <span class="kw">void</span> display() { System.out.println(<span class="str">"Area: "</span> + area()); }
+}
+
+<span class="kw">class</span> <span class="cl">Circle</span> <span class="kw">extends</span> <span class="cl">Shape</span> {
+    <span class="kw">double</span> radius;
+    <span class="cl">Circle</span>(<span class="kw">double</span> r) { <span class="kw">this</span>.radius = r; }
+    <span class="kw">double</span> area() { <span class="kw">return</span> <span class="num">3.14</span> * radius * radius; }
+}</div>
+      </div>
+    </div>
+
+    <!-- Interface vs Abstract -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-title">Interface vs Abstract Class — Most Asked Question</span>
+        <div class="topic-meta"><span class="priority p-critical">Must Know</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="topic-body open">
+        <table class="comp">
+          <tr><th>Aspect</th><th>Interface</th><th>Abstract Class</th></tr>
+          <tr><td>Purpose</td><td>Define a contract (what to do)</td><td>Partial implementation (some done, some not)</td></tr>
+          <tr><td>Methods</td><td>All abstract by default (Java 8+ allows default methods)</td><td>Can have both abstract and concrete methods</td></tr>
+          <tr><td>Variables</td><td>Only public static final constants</td><td>Can have instance variables of any type</td></tr>
+          <tr><td>Multiple</td><td>A class can implement multiple interfaces</td><td>A class can extend only ONE abstract class</td></tr>
+          <tr><td>Constructor</td><td>No constructor</td><td>Can have constructor</td></tr>
+          <tr><td>When to use</td><td>Unrelated classes sharing a behavior (Flyable, Serializable)</td><td>Related classes sharing code (Vehicle → Car, Truck)</td></tr>
+        </table>
+        <div class="callout callout-green"><strong>Perfect interview answer:</strong> "I use an interface when I want to define a capability that unrelated classes can share — like Comparable or Serializable. I use an abstract class when there's a clear parent-child relationship with some shared implementation. For example, Vehicle as an abstract class with shared fuel() logic, and Flyable as an interface implemented by both Bird and Airplane."</div>
+      </div>
+    </div>
+
+    <!-- Exception Handling -->
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-title">Exception Handling</span>
+        <div class="topic-meta"><span class="priority p-high">High Priority</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="topic-body">
+        <div class="prose">An exception is an unexpected event that disrupts program flow (file not found, null pointer, divide by zero). Java handles them with try-catch-finally.</div>
+        <div class="code-block"><span class="kw">try</span> {
+    <span class="kw">int</span> result = <span class="num">10</span> / <span class="num">0</span>; <span class="c">// throws ArithmeticException</span>
+} <span class="kw">catch</span> (<span class="cl">ArithmeticException</span> e) {
+    System.out.println(<span class="str">"Error: "</span> + e.getMessage());
+} <span class="kw">finally</span> {
+    System.out.println(<span class="str">"This always runs"</span>); <span class="c">// cleanup code</span>
+}</div>
+        <div class="prose"><strong>Checked exceptions:</strong> Must be handled at compile time (IOException, SQLException). You MUST either catch them or declare them with <code>throws</code>.</div>
+        <div class="prose"><strong>Unchecked exceptions:</strong> Runtime exceptions — NullPointerException, ArrayIndexOutOfBoundsException. Not mandatory to catch but should be.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ REST ═══════════════════════════════ -->
+  <section class="section" id="api">
+    <div class="section-header">
+      <div class="section-num">02 — Enterprise Technologies</div>
+      <div class="section-title">REST APIs & HTTP</div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-title">What is REST and how does it work?</span>
+        <div class="topic-meta"><span class="priority p-critical">Must Know</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="topic-body open">
+        <div class="callout callout-blue">REST (Representational State Transfer) is an architectural style for building web services. It defines rules for how clients and servers communicate over HTTP. Think of it as the "language" that web applications use to talk to each other.</div>
+
+        <div class="block-title">The 6 REST Constraints</div>
+        <div class="prose"><strong>1. Stateless:</strong> Each request must contain all the information needed. The server does not store session state between requests. Every call is independent.</div>
+        <div class="prose"><strong>2. Client-Server:</strong> Frontend (client) and backend (server) are separate. They communicate only through APIs. This separation allows them to evolve independently.</div>
+        <div class="prose"><strong>3. Uniform Interface:</strong> Consistent URL patterns and HTTP methods. Resources are identified by URLs.</div>
+        <div class="prose"><strong>4. Cacheable:</strong> Responses can be cached to improve performance.</div>
+        <div class="prose"><strong>5. Layered System:</strong> Client doesn't need to know if it's talking directly to the server or through a load balancer, cache, etc.</div>
+        <div class="prose"><strong>6. Code on Demand (Optional):</strong> Server can send executable code (like JavaScript) to the client.</div>
+
+        <div class="block-title">HTTP Methods — The Core Four</div>
+        <div class="code-block">GET    /users          → Fetch all users (read only, no body)
+GET    /users/42       → Fetch user with id=42
+POST   /users          → Create a new user (send data in body)
+PUT    /users/42       → Replace user 42 completely (full update)
+PATCH  /users/42       → Update only some fields of user 42
+DELETE /users/42       → Delete user 42</div>
+
+        <div class="block-title">HTTP Status Codes — Memorize These</div>
+        <table class="comp">
+          <tr><th>Code</th><th>Meaning</th><th>When you see it</th></tr>
+          <tr><td>200 OK</td><td>Success</td><td>GET request returned data</td></tr>
+          <tr><td>201 Created</td><td>Resource created</td><td>POST created a new record</td></tr>
+          <tr><td>204 No Content</td><td>Success, no body</td><td>DELETE was successful</td></tr>
+          <tr><td>400 Bad Request</td><td>Invalid request</td><td>Missing required fields in body</td></tr>
+          <tr><td>401 Unauthorized</td><td>Not authenticated</td><td>No login token sent</td></tr>
+          <tr><td>403 Forbidden</td><td>No permission</td><td>Logged in but not allowed</td></tr>
+          <tr><td>404 Not Found</td><td>Resource missing</td><td>User id doesn't exist</td></tr>
+          <tr><td>500 Internal Server Error</td><td>Server crashed</td><td>Bug in backend code</td></tr>
+        </table>
+        <div class="callout callout-amber"><strong>Memory trick:</strong> 401 = "Who are you?" (unauthenticated). 403 = "I know who you are, but you can't come in" (unauthorized).</div>
+
+        <div class="block-title">REST API Design Example (from your TrustLens project)</div>
+        <div class="code-block">POST   /api/analyze         → Submit audio for deception analysis
+GET    /api/results/{id}    → Get analysis result by ID
+GET    /api/history         → Get all past analyses
+
+Request body (JSON):
+{
+  "audio_url": "https://storage.../file.wav",
+  "user_id": "user_123"
+}
+
+Response (JSON):
+{
+  "status": "success",
+  "deception_score": 0.73,
+  "confidence": 0.89
+}</div>
+        <div class="callout callout-green"><strong>Interview tip:</strong> Connect this to your project. Say: "In TrustLens, I designed REST endpoints with a clear contract — POST /analyze accepted audio in the request body and returned a JSON response with the deception score. The frontend consumed this API without knowing anything about the ML model behind it — that's the power of REST."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ JSON XML ═══════════════════════════════ -->
+  <section class="section" id="json">
+    <div class="section-header">
+      <div class="section-num">03 — Data Formats</div>
+      <div class="section-title">JSON & XML</div>
+    </div>
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-title">JSON vs XML — Data Exchange Formats</span>
+        <div class="topic-meta"><span class="priority p-high">High Priority</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="topic-body open">
+        <div class="prose">Both are formats for sending structured data between systems. JSON is modern and lightweight; XML is older but still widely used in enterprise.</div>
+        <div class="block-title">JSON — JavaScript Object Notation</div>
+        <div class="code-block">{
+  "employee": {
+    "name": "Ashish Sharma",
+    "age": 21,
+    "skills": ["Java", "REST", "Python"],
+    "active": true,
+    "address": {
+      "city": "Bhiwani",
+      "state": "Haryana"
+    }
+  }
+}</div>
+        <div class="prose">Rules: Keys must be in double quotes. Values can be string, number, boolean, null, array, or object. Lightweight, easy to parse, natively supported in JavaScript.</div>
+        <div class="block-title">XML — eXtensible Markup Language</div>
+        <div class="code-block">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;employee&gt;
+  &lt;name&gt;Ashish Sharma&lt;/name&gt;
+  &lt;age&gt;21&lt;/age&gt;
+  &lt;skills&gt;
+    &lt;skill&gt;Java&lt;/skill&gt;
+    &lt;skill&gt;REST&lt;/skill&gt;
+  &lt;/skills&gt;
+  &lt;active&gt;true&lt;/active&gt;
+&lt;/employee&gt;</div>
+        <table class="comp">
+          <tr><th>Feature</th><th>JSON</th><th>XML</th></tr>
+          <tr><td>Verbosity</td><td>Lightweight, concise</td><td>Verbose, more characters</td></tr>
+          <tr><td>Readability</td><td>Easy to read</td><td>Readable but bulky</td></tr>
+          <tr><td>Parsing</td><td>Fast, native in JS</td><td>Slower, requires XML parser</td></tr>
+          <tr><td>Use case</td><td>Modern REST APIs, web apps</td><td>Enterprise systems, SOAP, config files</td></tr>
+          <tr><td>Comments</td><td>Not supported</td><td>Supported</td></tr>
+          <tr><td>Schema validation</td><td>JSON Schema</td><td>DTD or XSD (more powerful)</td></tr>
+        </table>
+        <div class="callout callout-green"><strong>Interview answer:</strong> "I prefer JSON for REST APIs because it is lightweight and parses natively in JavaScript. However, XML is still important in enterprise integration — MuleSoft and Salesforce integrations often deal with XML data from legacy systems. In my internship, our API used JSON, but we had to transform it to XML for a third-party service."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ SOA MQ ═══════════════════════════════ -->
+  <section class="section" id="soa">
+    <div class="section-header">
+      <div class="section-num">04 — Architecture</div>
+      <div class="section-title">SOA & Message Queues</div>
+    </div>
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-title">Service-Oriented Architecture (SOA)</span>
+        <div class="topic-meta"><span class="priority p-high">High Priority</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="topic-body open">
+        <div class="prose">SOA is a software design approach where an application is built as a collection of independent services. Each service performs one specific business function and communicates with others through well-defined APIs.</div>
+        <div class="block-title">Real-world example — E-commerce order</div>
+        <div class="code-block">When you place an order on Amazon:
+  Order Service     → validates and stores the order
+  Payment Service   → charges your credit card
+  Inventory Service → checks and reserves stock
+  Shipping Service  → arranges delivery
+  Notification Service → sends you a confirmation email
+
+Each service is independent. Payment Service doesn't care
+HOW Notification Service works — it just calls its API.</div>
+        <div class="callout callout-blue"><strong>Your TrustLens project was SOA:</strong> Audio Processing Service (handled file input), ML Inference Service (ran the model), Results Service (stored and returned results), and the Next.js frontend consumed all of these via REST APIs. This is exactly what you should say in the interview.</div>
+        <div class="block-title">SOA vs Microservices</div>
+        <div class="prose"><strong>SOA:</strong> Services are larger, may share a common data bus or ESB (Enterprise Service Bus). More structured, common in large enterprises.</div>
+        <div class="prose"><strong>Microservices:</strong> Extremely fine-grained services, independently deployable, communicate over lightweight protocols. Modern approach.</div>
+        <div class="prose">Think of SOA as "departments in a company" and microservices as "individual employees, each with one clear role".</div>
+      </div>
+    </div>
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-title">Message Queues (MQ)</span>
+        <div class="topic-meta"><span class="priority p-high">High Priority</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="topic-body">
+        <div class="prose">A message queue enables asynchronous communication between services. The sender (producer) puts a message in the queue and moves on — it does not wait. The receiver (consumer) picks up the message when ready and processes it.</div>
+        <div class="block-title">Synchronous vs Asynchronous Communication</div>
+        <div class="code-block">Synchronous (HTTP/REST):
+  Client  →  "Process this order"  →  Server
+  Client  ←  [waits 3 seconds]     ←  Server
+  Client  ←  "Done! Order #1234"   ←  Server
+  (Client is blocked while waiting)
+
+Asynchronous (Message Queue):
+  Producer  →  drops message in queue  →  Queue
+  Producer continues doing other work...
+  Consumer  ←  picks up message later  ←  Queue
+  Consumer  →  processes and sends result separately</div>
+        <div class="block-title">Why use Message Queues?</div>
+        <div class="prose"><strong>Decoupling:</strong> Services don't need to know about each other — they just read from the queue.</div>
+        <div class="prose"><strong>Reliability:</strong> If a service is down, messages wait in the queue safely. Nothing is lost.</div>
+        <div class="prose"><strong>Load handling:</strong> If 10,000 orders arrive at once, the queue absorbs the load. Processing happens at a manageable pace.</div>
+        <div class="prose">Popular tools: <strong>RabbitMQ</strong>, <strong>Apache Kafka</strong> (high throughput), <strong>IBM MQ</strong> (enterprise, used with Salesforce/MuleSoft)</div>
+        <div class="callout callout-green"><strong>Interview answer:</strong> "Message queues provide asynchronous, loosely-coupled communication between services. For example, in an order processing system, when a customer places an order, the Order Service drops a message into the queue and immediately confirms to the customer. The Inventory and Shipping services pick up and process these messages independently. This makes the system more resilient — if the Shipping Service goes down, orders keep queueing safely."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ COLLECTIONS ═══════════════════════════════ -->
+  <section class="section" id="collections">
+    <div class="section-header">
+      <div class="section-num">05 — Java Fundamentals</div>
+      <div class="section-title">Java Collections & Basic DSA</div>
+    </div>
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-title">Java Collections Framework</span>
+        <div class="topic-meta"><span class="priority p-critical">HackerRank Critical</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="topic-body open">
+        <div class="block-title">ArrayList — Dynamic array</div>
+        <div class="code-block"><span class="cl">ArrayList</span>&lt;<span class="cl">String</span>&gt; names = <span class="kw">new</span> <span class="cl">ArrayList</span>&lt;&gt;();
+names.add(<span class="str">"Ashish"</span>);    <span class="c">// add element</span>
+names.add(<span class="str">"Gourav"</span>);
+names.get(<span class="num">0</span>);          <span class="c">// "Ashish" — O(1) access</span>
+names.remove(<span class="num">0</span>);       <span class="c">// removes first element</span>
+names.size();           <span class="c">// 1</span>
+<span class="c">// Use when: you need ordered list, frequent access by index</span></div>
+
+        <div class="block-title">HashMap — Key-Value pairs</div>
+        <div class="code-block"><span class="cl">HashMap</span>&lt;<span class="cl">String</span>, <span class="cl">Integer</span>&gt; scores = <span class="kw">new</span> <span class="cl">HashMap</span>&lt;&gt;();
+scores.put(<span class="str">"Ashish"</span>, <span class="num">95</span>);
+scores.put(<span class="str">"Gourav"</span>, <span class="num">88</span>);
+scores.get(<span class="str">"Ashish"</span>);       <span class="c">// 95 — O(1) lookup</span>
+scores.containsKey(<span class="str">"Gourav"</span>); <span class="c">// true</span>
+scores.keySet();              <span class="c">// iterate all keys</span>
+<span class="c">// Use when: fast lookup by key, word count, caching</span></div>
+
+        <div class="block-title">HashSet — Unique values only</div>
+        <div class="code-block"><span class="cl">HashSet</span>&lt;<span class="cl">Integer</span>&gt; unique = <span class="kw">new</span> <span class="cl">HashSet</span>&lt;&gt;();
+unique.add(<span class="num">5</span>); unique.add(<span class="num">3</span>); unique.add(<span class="num">5</span>);
+<span class="c">// unique = {3, 5} — duplicates ignored automatically</span>
+unique.contains(<span class="num">3</span>); <span class="c">// true — O(1) lookup</span>
+<span class="c">// Use when: removing duplicates, checking membership</span></div>
+
+        <div class="block-title">LinkedList — Fast insert/delete</div>
+        <div class="code-block"><span class="cl">LinkedList</span>&lt;<span class="cl">String</span>&gt; queue = <span class="kw">new</span> <span class="cl">LinkedList</span>&lt;&gt;();
+queue.addFirst(<span class="str">"Task 1"</span>); <span class="c">// add to front — O(1)</span>
+queue.addLast(<span class="str">"Task 2"</span>);  <span class="c">// add to back — O(1)</span>
+queue.removeFirst();      <span class="c">// FIFO behavior</span>
+<span class="c">// Use when: implementing queues/stacks, frequent insert/delete</span></div>
+
+        <div class="callout callout-amber"><strong>When to use which:</strong> ArrayList for indexed access, HashMap for key-based lookup, HashSet for unique items, LinkedList for queue/stack behavior.</div>
+
+        <div class="block-title">Sorting and Searching (HackerRank basics)</div>
+        <div class="code-block"><span class="c">// Sort an array</span>
+<span class="kw">int</span>[] arr = {<span class="num">5</span>, <span class="num">2</span>, <span class="num">8</span>, <span class="num">1</span>};
+Arrays.sort(arr); <span class="c">// [1, 2, 5, 8] — O(n log n)</span>
+
+<span class="c">// Binary Search (array must be sorted first)</span>
+<span class="kw">int</span> idx = Arrays.binarySearch(arr, <span class="num">5</span>); <span class="c">// returns index of 5</span>
+
+<span class="c">// String reversal (common interview question)</span>
+<span class="cl">String</span> s = <span class="str">"hello"</span>;
+<span class="cl">String</span> rev = <span class="kw">new</span> <span class="cl">StringBuilder</span>(s).reverse().toString(); <span class="c">// "olleh"</span>
+
+<span class="c">// Count character frequencies (uses HashMap)</span>
+<span class="cl">HashMap</span>&lt;<span class="cl">Character</span>, <span class="cl">Integer</span>&gt; freq = <span class="kw">new</span> <span class="cl">HashMap</span>&lt;&gt;();
+<span class="kw">for</span> (<span class="kw">char</span> c : s.toCharArray()) {
+    freq.put(c, freq.getOrDefault(c, <span class="num">0</span>) + <span class="num">1</span>);
+}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ SALESFORCE ═══════════════════════════════ -->
+  <section class="section" id="salesforce">
+    <div class="section-header">
+      <div class="section-num">06 — Salesforce Track</div>
+      <div class="section-title">Salesforce Platform</div>
+    </div>
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-title">What is Salesforce and why does it matter</span>
+        <div class="topic-meta"><span class="priority p-high">Important</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="topic-body open">
+        <div class="prose">Salesforce is the world's #1 CRM (Customer Relationship Management) platform. Companies use it to manage all their customer interactions — sales leads, support tickets, marketing campaigns, and more — in one cloud-based platform.</div>
+        <div class="callout callout-blue"><strong>Why Caelius cares:</strong> Caelius is a Salesforce consulting partner. Their entire business is implementing, customizing, and integrating Salesforce for clients. Your job as an Associate Solution Consultant will involve understanding client requirements and building solutions on Salesforce.</div>
+
+        <div class="block-title">Core Salesforce Concepts</div>
+        <div class="prose"><strong>Objects:</strong> Like database tables. There are Standard Objects (Account, Contact, Lead, Opportunity, Case) that come built-in, and Custom Objects you create for specific business needs.</div>
+        <div class="prose"><strong>Records:</strong> A single row in an object. One specific customer = one Contact record.</div>
+        <div class="prose"><strong>Fields:</strong> Columns in an object. Contact has Name, Email, Phone fields.</div>
+        <div class="prose"><strong>Relationships:</strong> Links between objects. A Contact belongs to an Account. An Opportunity is linked to an Account.</div>
+
+        <div class="block-title">SOQL — Salesforce Query Language</div>
+        <div class="code-block"><span class="c">-- Select all contacts in Mohali</span>
+SELECT Name, Email, Phone
+FROM Contact
+WHERE MailingCity = <span class="str">'Mohali'</span>
+
+<span class="c">-- Get open opportunities above 1 lakh</span>
+SELECT Name, Amount, CloseDate
+FROM Opportunity
+WHERE Amount > <span class="num">100000</span> AND StageName != <span class="str">'Closed Lost'</span>
+
+<span class="c">-- It's very similar to SQL — if you know SQL, SOQL is easy</span></div>
+
+        <div class="block-title">Salesforce Development Approaches</div>
+        <div class="prose"><strong>Declarative (No-code/Low-code):</strong> Point-and-click tools. Flow Builder (automate processes), Validation Rules (data quality), Formula Fields, Reports & Dashboards. Freshers start here.</div>
+        <div class="prose"><strong>Programmatic:</strong> Writing actual code. Apex (Salesforce's Java-like language for backend logic), Lightning Web Components — LWC (JavaScript/HTML for frontend UI).</div>
+
+        <div class="block-title">Salesforce Clouds</div>
+        <div class="prose"><strong>Sales Cloud:</strong> Managing leads, contacts, deals, and sales pipelines. Most common.</div>
+        <div class="prose"><strong>Service Cloud:</strong> Customer support — cases, tickets, knowledge articles.</div>
+        <div class="prose"><strong>Marketing Cloud:</strong> Email campaigns, customer journeys.</div>
+        <div class="prose"><strong>Experience Cloud:</strong> Customer/partner portals.</div>
+
+        <div class="callout callout-green"><strong>Action step:</strong> Go to trailhead.salesforce.com and complete "Salesforce Platform Basics" (free, ~1 hour). You will get a badge. Mentioning this in your interview is a significant advantage — it shows initiative.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ MULESOFT ═══════════════════════════════ -->
+  <section class="section" id="mulesoft">
+    <div class="section-header">
+      <div class="section-num">07 — Integration</div>
+      <div class="section-title">MuleSoft</div>
+    </div>
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-title">MuleSoft — Enterprise Integration Platform</span>
+        <div class="topic-meta"><span class="priority p-bonus">Bonus Points</span><span class="chevron">▼</span></div>
+      </div>
+      <div class="topic-body open">
+        <div class="prose">MuleSoft is an integration platform (now owned by Salesforce) that connects different enterprise systems together. Companies typically have multiple systems — Salesforce, SAP ERP, legacy databases, third-party APIs — and MuleSoft acts as the integration layer between them.</div>
+
+        <div class="block-title">The Problem MuleSoft Solves</div>
+        <div class="code-block">Without MuleSoft:
+  Salesforce ←→ SAP      (custom code)
+  Salesforce ←→ Database  (custom code)
+  SAP        ←→ Database  (custom code)
+  → Messy, hard to maintain, expensive
+
+With MuleSoft (Anypoint Platform):
+  Salesforce ↘
+  SAP        →  MuleSoft (single hub)  → All connected
+  Database   ↗
+  → Clean, reusable, manageable</div>
+
+        <div class="block-title">Key MuleSoft Concepts</div>
+        <div class="prose"><strong>Anypoint Platform:</strong> MuleSoft's main tool — where you design, build, test, and deploy integrations (called Mule applications).</div>
+        <div class="prose"><strong>Mule Flow:</strong> A sequence of processing steps. Data enters, gets transformed, and exits. Like an assembly line for data.</div>
+        <div class="prose"><strong>Connectors:</strong> Pre-built plugins to connect to popular systems — Salesforce Connector, Database Connector, HTTP Connector, Email Connector. You drag and drop, no need to write connection code.</div>
+        <div class="prose"><strong>DataWeave:</strong> MuleSoft's transformation language. Converts data from one format to another — JSON to XML, rename fields, filter data.</div>
+        <div class="prose"><strong>API-led Connectivity:</strong> MuleSoft's recommended architecture with 3 layers — System APIs (raw data from backend), Process APIs (business logic), Experience APIs (tailored for mobile, web, partners).</div>
+        <div class="callout callout-green"><strong>Interview answer:</strong> "MuleSoft is an integration platform that connects disparate enterprise systems through a unified API layer. It uses an API-led connectivity model with three tiers — System, Process, and Experience APIs — which makes integrations reusable and maintainable. In a Salesforce project, MuleSoft would connect Salesforce with backend ERP systems and expose clean APIs for the front-end applications."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ INTERVIEW PROCESS ═══════════════════════════════ -->
+  <section class="section" id="process">
+    <div class="section-header">
+      <div class="section-num">08 — Selection Process</div>
+      <div class="section-title">Interview Rounds — What to Expect</div>
+    </div>
+
+    <div class="round-card">
+      <div class="round-num">1</div>
+      <div class="round-content">
+        <div class="round-title">Psychometric + Technical Test (Online)</div>
+        <div class="round-desc">Personality assessment + Java/OOP MCQs. The personality test has no right or wrong answers — answer naturally and consistently. For technical, expect 20-30 MCQs on OOP concepts, Java syntax, basic DSA.</div>
+        <div class="round-tips">Prepare: Review all 4 OOP pillars, Java syntax basics, static vs instance methods, access modifiers (public, private, protected).</div>
+      </div>
+    </div>
+    <div class="round-card">
+      <div class="round-num">2</div>
+      <div class="round-content">
+        <div class="round-title">Group Discussion</div>
+        <div class="round-desc">A tech or business topic. Evaluators watch for communication skills, ability to listen, whether you can present a structured argument, and leadership/collaboration.</div>
+        <div class="round-tips">How to perform: Open strongly with a clear position. Reference others' points ("building on what Rahul said..."). Bring the discussion toward a conclusion. Topics to prep: AI in enterprise software, digital transformation, cloud vs on-premise, importance of data privacy.</div>
+      </div>
+    </div>
+    <div class="round-card">
+      <div class="round-num key">3</div>
+      <div class="round-content">
+        <div class="round-title">HackerRank Coding Assessment — Most Critical</div>
+        <div class="round-desc">2-3 coding problems. Typically one string/array problem (easy), one OOP design problem (medium), sometimes one logic/math problem.</div>
+        <div class="round-tips">Practice these patterns in Java: Array reversal, finding max/min, counting character frequencies (HashMap), checking palindromes, FizzBuzz, sorting objects by fields, simple linked list or stack operations. Solve at least 15 easy problems on LeetCode or HackerRank in Java before the drive.</div>
+      </div>
+    </div>
+    <div class="round-card">
+      <div class="round-num key">4</div>
+      <div class="round-content">
+        <div class="round-title">Technical Panel Interview — Deep Dive</div>
+        <div class="round-desc">1-2 senior engineers will ask detailed technical questions. They will go through your resume and ask you to explain every claim. Expect 45-60 minutes.</div>
+        <div class="round-tips">They will definitely ask about TrustLens and Loyalty Lock since they align with Caelius's work. Prepare to whiteboard or explain your architecture verbally. Have crisp 2-minute explanations for each project ready.</div>
+      </div>
+    </div>
+    <div class="round-card">
+      <div class="round-num">5</div>
+      <div class="round-content">
+        <div class="round-title">Managerial Interview (Final Round)</div>
+        <div class="round-desc">Focus on motivation, career goals, client-facing aptitude, and fit. They are hiring for "Solution Consultant" — someone who can interact with clients, understand business problems, and translate them into technical solutions.</div>
+        <div class="round-tips">Prepare: Why Caelius specifically, why solution consulting over pure development, a time you solved a complex problem, long-term career goals, how you handle pressure and deadlines.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ PROJECTS ═══════════════════════════════ -->
+  <section class="section" id="projects">
+    <div class="section-header">
+      <div class="section-num">09 — Your Biggest Advantage</div>
+      <div class="section-title">How to Present Your Projects</div>
+    </div>
+    <div class="callout callout-blue" style="margin-bottom:20px;">Your projects are <strong>extremely well-aligned</strong> with Caelius's work. Most candidates won't have this. Use them aggressively — connect every technical question back to your project experience.</div>
+
+    <div class="proj-card">
+      <div class="proj-name">TrustLens — AI Voice Deception Detection</div>
+      <div class="proj-sub">FastAPI · REST APIs · JSON contracts · Next.js · Three.js · SOA architecture</div>
+      <div class="proj-point"><strong>Architecture angle:</strong> "I designed TrustLens using a Service-Oriented Architecture. The backend had three independent services — audio ingestion, ML inference, and results storage — all communicating through REST APIs with JSON contracts. The Next.js frontend consumed these APIs without knowing anything about the ML model."</div>
+      <div class="proj-point"><strong>REST API angle:</strong> "The core endpoint was POST /analyze which accepted audio data in the request body and returned a JSON response with the deception score and confidence level. I designed it following REST principles — stateless, uniform interface, clear HTTP status codes."</div>
+      <div class="proj-point"><strong>Business value angle:</strong> "The business use case is fraud detection — insurance companies, call centers, and law enforcement can use AI-based voice analysis to flag potentially deceptive interactions. This is a real enterprise pain point."</div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-name">Loyalty Lock — Customer Churn Prediction</div>
+      <div class="proj-sub">React · TypeScript · TensorFlow · CRM analytics · 82% accuracy · 8,000 customer dataset</div>
+      <div class="proj-point"><strong>Salesforce angle:</strong> "Loyalty Lock is essentially what Salesforce Einstein Analytics does — predicting which customers are likely to churn so sales teams can proactively retain them. My project built this from scratch, achieving 82% accuracy on 8,000 records."</div>
+      <div class="proj-point"><strong>Business analysis angle:</strong> "I didn't just build the model — I built a business-facing dashboard that translated ML probabilities into actionable insights: which customers to call first, predicted revenue at risk, recommended retention offers."</div>
+      <div class="proj-point"><strong>Solution consulting angle:</strong> "This project taught me that the technical solution is only valuable when it addresses a business problem clearly. That's exactly what solution consulting is — bridging the gap between business requirements and technical implementation."</div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-name">ML Intern at 1Stop AI</div>
+      <div class="proj-sub">July–Sept 2025 · TensorFlow · REST API integration · Production deployment · Cross-functional teams</div>
+      <div class="proj-point"><strong>What to emphasize:</strong> "I worked on production ML pipelines integrated into real systems via REST APIs. I participated in the full project lifecycle — from requirement gathering with stakeholders to deployment and validation. This is exactly the workflow Caelius follows for their clients."</div>
+      <div class="proj-point"><strong>Team collaboration:</strong> "I collaborated with cross-functional teams including data engineers and frontend developers. I learned that clear API documentation and well-defined JSON contracts are critical for teams to work in parallel without blocking each other."</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ Q&A ═══════════════════════════════ -->
+  <section class="section" id="questions">
+    <div class="section-header">
+      <div class="section-num">10 — Practice</div>
+      <div class="section-title">50+ Interview Questions with Answers</div>
+    </div>
+    <div class="callout callout-amber" style="margin-bottom:20px;">Click any question to reveal the model answer. Practice saying these out loud — not reading them. The goal is to internalize the concept, not memorize word-for-word.</div>
+
+    <!-- Java OOP Questions -->
+    <div class="block-title" style="margin-bottom:10px;">Java & OOP — Technical Panel Questions</div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q1</span>
+        <span class="qa-text">What are the four pillars of OOP? Give a real-world example for each.</span>
+        <span class="qa-tag p-critical priority">Critical</span>
+      </div>
+      <div class="qa-answer">
+        <strong>Encapsulation:</strong> Bundling data and methods, restricting direct access. Example: A bank account where balance is private — you can only modify it through deposit() and withdraw() methods.<br><br>
+        <strong>Inheritance:</strong> Child class inherits from parent. Example: Dog extends Animal — Dog gets eat() and breathe() for free, plus adds its own bark().<br><br>
+        <strong>Polymorphism:</strong> Same interface, different behavior. Example: Animal.sound() returns "..." but Cat.sound() returns "Meow" and Dog.sound() returns "Woof" — same method call, different output.<br><br>
+        <strong>Abstraction:</strong> Hiding implementation, showing only what's needed. Example: You use Arrays.sort() without knowing whether it uses TimSort or QuickSort internally.
+        <div class="sample">In my TrustLens project, I used encapsulation in the AudioProcessor class — the raw model weights were private, and I exposed only a public analyze(audioData) method. This is a real production example of encapsulation protecting the internal ML logic.</div>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q2</span>
+        <span class="qa-text">What is the difference between an interface and an abstract class? When would you use each?</span>
+        <span class="qa-tag p-critical priority">Critical</span>
+      </div>
+      <div class="qa-answer">
+        An <strong>abstract class</strong> can have concrete methods, instance variables, and constructors. A class can extend only one abstract class. Use it when you have a parent-child relationship with shared code.<br><br>
+        An <strong>interface</strong> defines only a contract — what methods must exist, not how they work (in Java 8+, default methods are allowed). A class can implement multiple interfaces. Use it when unrelated classes need to share a capability.<br><br>
+        <div class="sample">I would use an abstract class for Vehicle → Car, Truck because they share common fuel() and maintenance() logic. I would use an interface for Serializable or Flyable — both an Airplane and a Bird can fly, but they have nothing else in common, so it makes no sense for them to share a parent class.</div>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q3</span>
+        <span class="qa-text">Explain method overloading vs method overriding with an example.</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        <strong>Overloading</strong> is compile-time polymorphism — same method name in the same class, different parameter lists. The compiler decides which version to call based on the arguments you pass.<br><br>
+        <strong>Overriding</strong> is runtime polymorphism — a subclass provides its own implementation of a method already defined in the parent class. The JVM decides which version to call at runtime based on the actual object type.
+        <div class="sample">Overloading: print(String s) and print(int n) in the same class — same name, different input. Overriding: Animal has sound() returning "...", but Dog overrides it with @Override sound() returning "Woof" — the parent method is replaced by the child's version.</div>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q4</span>
+        <span class="qa-text">What is the difference between ArrayList and LinkedList?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        <strong>ArrayList</strong> is backed by a dynamic array. Random access by index is O(1) — very fast. But inserting or deleting in the middle is O(n) because elements need to shift.<br><br>
+        <strong>LinkedList</strong> stores elements as nodes where each node points to the next. Inserting at the beginning or end is O(1). But accessing element by index requires traversal — O(n).<br><br>
+        <strong>Rule of thumb:</strong> Use ArrayList when you need frequent random access. Use LinkedList when you need frequent insertions and deletions, especially when implementing a queue or stack.
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q5</span>
+        <span class="qa-text">What is the difference between checked and unchecked exceptions in Java?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        <strong>Checked exceptions</strong> are checked at compile time. The compiler forces you to either catch them or declare them with throws. Examples: IOException, SQLException, FileNotFoundException. They represent conditions outside the program's control.<br><br>
+        <strong>Unchecked exceptions</strong> are subclasses of RuntimeException. The compiler doesn't force you to handle them. Examples: NullPointerException, ArrayIndexOutOfBoundsException, IllegalArgumentException. They usually represent programming errors.<br><br>
+        <div class="sample">When reading a file, I use checked IOException because the file might not exist — this is an external condition. NullPointerException is unchecked because it means I made a programming mistake by not checking for null before calling a method.</div>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q6</span>
+        <span class="qa-text">What is the difference between HashMap and Hashtable?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        <strong>HashMap:</strong> Not thread-safe (not synchronized), allows one null key and multiple null values, faster. Modern choice.<br><br>
+        <strong>Hashtable:</strong> Thread-safe (synchronized), does not allow null keys or values, slower due to synchronization overhead, legacy class.<br><br>
+        If you need thread safety, use ConcurrentHashMap instead of Hashtable — it's synchronized at the bucket level rather than the entire map, making it much more performant in concurrent environments.
+      </div>
+    </div>
+
+    <!-- REST API Questions -->
+    <div class="block-title" style="margin:24px 0 10px;">REST APIs & HTTP Questions</div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q7</span>
+        <span class="qa-text">What is REST? What are its key principles?</span>
+        <span class="qa-tag p-critical priority">Critical</span>
+      </div>
+      <div class="qa-answer">
+        REST (Representational State Transfer) is an architectural style for designing networked applications. It relies on stateless, client-server communication using the HTTP protocol.<br><br>
+        <strong>Key principles:</strong> Stateless (each request contains all needed information), Client-Server separation (frontend and backend evolve independently), Uniform Interface (consistent URL and HTTP method conventions), Cacheable (responses can be cached), Layered System (client doesn't know about intermediaries), Code on Demand (optional — server can send executable code).
+        <div class="sample">In my TrustLens project, I built a REST API where the frontend and ML backend were completely decoupled. The frontend sent POST /analyze with audio data and received a JSON response — it had no idea whether the model was Python-based or what algorithm was used. That's REST's client-server separation in action.</div>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q8</span>
+        <span class="qa-text">What is the difference between PUT and PATCH?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        <strong>PUT</strong> replaces the entire resource. If you send PUT /users/1 with only the name field, all other fields (email, phone) get wiped out unless you include them.<br><br>
+        <strong>PATCH</strong> partially updates a resource. If you send PATCH /users/1 with only the name field, only the name changes — email and phone stay intact.<br><br>
+        Rule: Use PUT for full replacement, PATCH for partial updates. In practice, most APIs use PATCH for update operations because it is safer.
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q9</span>
+        <span class="qa-text">What does stateless mean in REST? Why is it important?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        Stateless means the server does not store any client session information between requests. Every request must contain all the information needed to process it — authentication token, parameters, and body data.<br><br>
+        <strong>Why important:</strong> Scalability — any server instance can handle any request since there is no session state to worry about. Reliability — if one server goes down, requests go to another without data loss. Simplicity — easier to debug since each request is self-contained.<br><br>
+        This is why REST APIs use tokens (JWT) in each request header rather than server-side sessions.
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q10</span>
+        <span class="qa-text">What HTTP status code would you return when a user successfully creates a new resource?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        <strong>201 Created</strong> — not 200 OK. The distinction matters: 200 means the request succeeded and here is the data. 201 specifically means a new resource was created as a result of the request. The response should include either the Location header pointing to the new resource, or the newly created resource in the response body.
+      </div>
+    </div>
+
+    <!-- SOA / Architecture Questions -->
+    <div class="block-title" style="margin:24px 0 10px;">SOA, MQ & Architecture Questions</div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q11</span>
+        <span class="qa-text">What is Service-Oriented Architecture? How is it different from microservices?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        <strong>SOA</strong> is a design approach where an application is built as a collection of loosely coupled, independent services that communicate through APIs. Each service performs a specific business function.<br><br>
+        <strong>Microservices</strong> is an evolution of SOA with even finer-grained services, independently deployable, each with its own database, typically communicating over lightweight HTTP or message queues.<br><br>
+        Key difference: SOA services tend to be larger and may share an Enterprise Service Bus. Microservices are smaller, more independent, and communicate directly. SOA is the concept; microservices is a more modern, granular implementation.
+        <div class="sample">My TrustLens project followed SOA principles — the audio service, ML service, and results service were independent and communicated through REST APIs. If I had split these into even smaller services (separate services for audio validation, format conversion, feature extraction), that would have been microservices.</div>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q12</span>
+        <span class="qa-text">When would you use a message queue instead of direct REST API calls?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        Use a message queue when: <br>
+        1. The operation is slow and you don't want the client to wait (async processing)<br>
+        2. You need to handle traffic spikes without crashing the system (buffering)<br>
+        3. Services should be loosely coupled — the sender doesn't need to know if the receiver is available<br>
+        4. You need guaranteed delivery even if a service goes down temporarily<br><br>
+        Example: In an order system, placing an order should be instant. The actual fulfillment (inventory check, shipping arrangement) can happen asynchronously via a queue. If the shipping service is temporarily down, orders just queue up — nothing is lost.
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q13</span>
+        <span class="qa-text">What is JSON? What are its advantages over XML?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        JSON (JavaScript Object Notation) is a lightweight data-interchange format that is easy for humans to read and write, and easy for machines to parse and generate. It uses key-value pairs and arrays.<br><br>
+        <strong>Advantages over XML:</strong> Less verbose (smaller payload size), faster to parse, natively supported in JavaScript without additional libraries, simpler syntax. XML is still preferred in enterprise contexts for its schema validation capabilities (XSD), namespace support, and when working with legacy SOAP services or SAP systems.
+      </div>
+    </div>
+
+    <!-- Salesforce Questions -->
+    <div class="block-title" style="margin:24px 0 10px;">Salesforce Questions</div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q14</span>
+        <span class="qa-text">What is Salesforce? What is a CRM?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        A CRM (Customer Relationship Management) system helps businesses manage all interactions with current and potential customers — tracking sales leads, customer communications, support cases, and deals in one place.<br><br>
+        Salesforce is the world's leading cloud-based CRM platform. It provides out-of-the-box tools for sales teams (Sales Cloud), customer support (Service Cloud), and marketing (Marketing Cloud), plus a powerful development platform for custom applications using Apex and Lightning Web Components.
+        <div class="sample">In my Loyalty Lock project, I built a churn prediction system that is essentially what Salesforce Einstein Analytics provides as a built-in feature — identifying at-risk customers and surfacing them for the sales team to act on. Working on that project gave me insight into exactly the kind of business problem Salesforce solves.</div>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q15</span>
+        <span class="qa-text">What is the difference between declarative and programmatic development in Salesforce?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        <strong>Declarative development:</strong> Building on Salesforce using point-and-click tools without writing code. This includes Flow Builder (automate processes), Validation Rules (enforce data quality), Formula Fields, Reports, and Dashboards. It's faster, doesn't require a developer, and is easier to maintain.<br><br>
+        <strong>Programmatic development:</strong> Writing actual code for complex business logic that cannot be achieved declaratively. Apex is used for backend logic (triggers, classes, batch jobs), and Lightning Web Components (LWC) for custom frontend UI.<br><br>
+        Best practice: Always prefer declarative if it meets the requirement. Use programmatic only when declarative tools are insufficient.
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q16</span>
+        <span class="qa-text">What is SOQL? How is it different from SQL?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        SOQL (Salesforce Object Query Language) is used to query data from Salesforce objects. It is similar to SQL but specifically designed for Salesforce's data model.<br><br>
+        <strong>Key differences:</strong> You query Salesforce Objects instead of database tables. No JOIN keyword — you traverse relationships using dot notation (Contact.Account.Name). No SELECT * — you must specify all fields. SOQL is read-only (no INSERT/UPDATE in SOQL — those use DML statements in Apex).<br><br>
+        <div class="sample">SELECT Id, Name, Email FROM Contact WHERE Account.Industry = 'Technology' — this uses relationship traversal (Account.Industry) instead of a JOIN, which is the main syntax difference from SQL.</div>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q17</span>
+        <span class="qa-text">What is MuleSoft and how does it relate to Salesforce?</span>
+        <span class="qa-tag p-bonus priority">Bonus</span>
+      </div>
+      <div class="qa-answer">
+        MuleSoft is an integration platform (acquired by Salesforce in 2018) used to connect different enterprise systems together. It enables companies to build APIs and integration flows that connect Salesforce with other systems like SAP, Oracle, legacy databases, and third-party services.<br><br>
+        <strong>Relation to Salesforce:</strong> Salesforce is excellent at managing customer data, but enterprises have data in many other places. MuleSoft acts as the integration layer — pulling customer data from multiple sources into Salesforce, or pushing Salesforce data out to other systems in real-time.<br><br>
+        MuleSoft uses an API-led connectivity model with three layers: System APIs (connect to raw data sources), Process APIs (business logic and transformation), Experience APIs (optimized for specific consumers like mobile apps or portals).
+      </div>
+    </div>
+
+    <!-- More questions -->
+    <div class="block-title" style="margin:24px 0 10px;">Additional Technical Questions</div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q18</span>
+        <span class="qa-text">What is the difference between a process and a thread?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        A <strong>process</strong> is an independent program execution with its own memory space. A <strong>thread</strong> is a lightweight unit of execution within a process that shares the process's memory.<br><br>
+        Multiple threads in the same process can communicate easily (shared memory) but need synchronization to avoid race conditions. Multiple processes are isolated from each other, making them safer but communication between them is more expensive (inter-process communication).<br><br>
+        Java's Thread class and Runnable interface allow multithreading. In modern Java, ExecutorService manages thread pools efficiently.
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q19</span>
+        <span class="qa-text">What is an API? Why are APIs important in enterprise software?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        An API (Application Programming Interface) is a defined contract that allows two software systems to communicate. It specifies what requests can be made, in what format, and what responses to expect — without exposing internal implementation.<br><br>
+        <strong>Enterprise importance:</strong> Large companies have dozens of systems (CRM, ERP, HR, e-commerce). APIs allow these systems to share data and automate workflows without rebuilding them. APIs also enable third-party integrations — a company can expose its data to partners through APIs. This is why companies like Salesforce and MuleSoft (Caelius's core platforms) are built entirely around the API economy.
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q20</span>
+        <span class="qa-text">What is the difference between authentication and authorization?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        <strong>Authentication</strong> verifies identity — "Who are you?" The system confirms you are who you claim to be (via password, token, biometric).<br><br>
+        <strong>Authorization</strong> verifies permissions — "What are you allowed to do?" After confirming your identity, the system checks what resources and actions you have access to.<br><br>
+        Example: You log in to Salesforce (authentication). Once logged in, your profile determines whether you can view all records or only your team's records (authorization). HTTP 401 = authentication failure. HTTP 403 = authorization failure.
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q21</span>
+        <span class="qa-text">What is a design pattern? Name two common ones.</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        A design pattern is a reusable solution to a commonly occurring problem in software design. They are templates, not code — you adapt them to your situation.<br><br>
+        <strong>Singleton:</strong> Ensures only one instance of a class exists. Example: database connection pool, logging service. Useful when a single shared resource must be controlled carefully.<br><br>
+        <strong>Factory:</strong> Creates objects without specifying the exact class. A factory method returns an object based on input. Example: ShapeFactory.create("circle") returns a Circle object. Useful when the exact type is determined at runtime.
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q22</span>
+        <span class="qa-text">Explain what a database index is and why it matters.</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        An index is a data structure that speeds up data retrieval operations in a database. Without an index, a database must scan every row to find matching data (full table scan). With an index, it can jump directly to the relevant rows — similar to a book's index allowing you to jump to a topic without reading every page.<br><br>
+        <strong>Trade-off:</strong> Indexes speed up SELECT queries but slow down INSERT, UPDATE, and DELETE operations because the index must also be updated. They also use additional disk space.<br><br>
+        Best practice: Index columns that are frequently used in WHERE clauses, JOIN conditions, and ORDER BY clauses. Avoid over-indexing.
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q23</span>
+        <span class="qa-text">What is Git and what is the difference between git merge and git rebase?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        Git is a distributed version control system. It tracks changes in code, allows multiple developers to work in parallel on branches, and enables merging changes together with history.<br><br>
+        <strong>git merge:</strong> Combines two branches by creating a new "merge commit" that ties both histories together. Preserves complete branch history. Safer and transparent.<br><br>
+        <strong>git rebase:</strong> Moves or replays your commits on top of another branch, creating a linear history. No merge commit. Creates a cleaner history but rewrites commit hashes — dangerous on shared/public branches.<br><br>
+        Rule: Merge for shared branches (main, develop). Rebase for cleaning up local feature branches before merging.
+      </div>
+    </div>
+
+    <!-- Project-based questions -->
+    <div class="block-title" style="margin:24px 0 10px;">Project-Based Questions — They WILL Ask These</div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q24</span>
+        <span class="qa-text">Walk me through your TrustLens project architecture.</span>
+        <span class="qa-tag p-critical priority">Critical</span>
+      </div>
+      <div class="qa-answer">
+        <div class="sample">TrustLens is an AI-powered voice deception detection system. I designed it with a service-oriented architecture to keep components independent and maintainable.<br><br>
+        The system has three layers. The backend is built with FastAPI in Python — it exposes REST endpoints that accept audio files via POST requests and return JSON responses with deception scores and confidence levels. The ML layer handles audio feature extraction (MFCC, pitch, energy patterns) and runs inference through a scikit-learn model. The frontend is built in Next.js with Three.js for 3D visualizations — it consumes the backend REST API.<br><br>
+        The key architectural decision was keeping the frontend completely decoupled from the ML logic through well-defined JSON contracts. This means I could swap out the ML model without touching the frontend. That's a fundamental principle of SOA and enterprise software design.</div>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">Q25</span>
+        <span class="qa-text">How does Loyalty Lock relate to what Caelius does with Salesforce?</span>
+        <span class="qa-tag p-critical priority">Critical</span>
+      </div>
+      <div class="qa-answer">
+        <div class="sample">Loyalty Lock predicts customer churn — which customers are likely to stop doing business with a company. This is directly the kind of analytics that Salesforce Einstein delivers natively within the Salesforce platform.<br><br>
+        In my project, I built the prediction model from scratch using TensorFlow on an 8,000-customer dataset achieving 82% accuracy, and then built a business-facing dashboard that translated probability scores into actionable insights: risk tiers, recommended interventions, and estimated revenue at risk.<br><br>
+        What I learned is that the technical model is only half the work — the real value is presenting predictions in a way that business users can act on. That insight directly maps to solution consulting, where the goal is not just building technically correct solutions, but solutions that solve real business problems clearly.</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════ HR QUESTIONS ═══════════════════════════════ -->
+  <section class="section" id="soft">
+    <div class="section-header">
+      <div class="section-num">11 — Managerial Round</div>
+      <div class="section-title">HR & Behavioural Questions</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">HR1</span>
+        <span class="qa-text">Tell me about yourself.</span>
+        <span class="qa-tag p-critical priority">Critical</span>
+      </div>
+      <div class="qa-answer">
+        <div class="sample">I am Ashish, a B.Tech CSE-AIML student at CGC University, Mohali, graduating in 2027. I have hands-on experience building production-grade AI and full-stack applications. My most relevant project is TrustLens — an AI voice deception detection system where I designed the REST API architecture, ML pipeline, and Next.js frontend as three independent services. I also built Loyalty Lock, a customer churn prediction system with an analytics dashboard, which is directly related to Salesforce CRM analytics.<br><br>
+        I completed a Machine Learning internship at 1Stop AI where I worked on production API integrations and participated in the full project lifecycle from requirements to deployment. I am strong in Java, OOP, REST APIs, and I am actively deepening my Salesforce knowledge through Trailhead.<br><br>
+        I am drawn to solution consulting because I enjoy both the technical and the business sides of building software — and Caelius is the right place to grow in that direction.</div>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">HR2</span>
+        <span class="qa-text">Why Caelius Consulting? Why not a pure software development company?</span>
+        <span class="qa-tag p-critical priority">Critical</span>
+      </div>
+      <div class="qa-answer">
+        <div class="sample">What attracts me to Caelius specifically is that the role is about solving real business problems, not just writing code. As a Solution Consultant, I would need to understand what a client's business actually needs, translate that into a Salesforce solution, and see it through to delivery. That full cycle — from business analysis to implementation — is where I want to grow.<br><br>
+        The Salesforce ecosystem is also globally in demand. Building expertise in Salesforce, MuleSoft, and enterprise integration early in my career gives me a strong foundation. And Caelius's Centre of Excellence programs mean structured mentorship and learning — which is invaluable for a fresher.<br><br>
+        Pure development would have me working on one layer. Here, I would be engaged with the business impact of every technical decision I make.</div>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">HR3</span>
+        <span class="qa-text">Where do you see yourself in 3 years?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        <div class="sample">In three years, I see myself as a certified Salesforce developer — having completed Platform Developer and possibly Administrator certifications. I want to be someone who can independently lead the technical design of a Salesforce implementation for a client, from understanding their requirements to delivering a working solution.<br><br>
+        I am also interested in the integration side — MuleSoft and connecting enterprise systems — because that is where a lot of the complexity in real enterprise projects lies. Long term, I want to grow toward an architect or technical lead role where I am designing solutions, not just implementing them.</div>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">HR4</span>
+        <span class="qa-text">Tell me about a challenge you faced in a project and how you resolved it.</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        <div class="sample">During TrustLens, the biggest challenge was latency. The ML inference was taking 4-5 seconds per audio file, which made the user experience unusable. The frontend would just hang waiting for the response.<br><br>
+        I analyzed the bottleneck and found two issues: the model was loading from disk on every request, and audio preprocessing was being done synchronously. I resolved this by loading the model once at server startup and keeping it in memory, and by optimizing the audio feature extraction pipeline to reduce unnecessary computation.<br><br>
+        The result was response time dropping from 4-5 seconds to under 800 milliseconds. This experience taught me to always profile before optimizing, and that performance is a feature — not an afterthought.</div>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">HR5</span>
+        <span class="qa-text">How do you handle working under pressure or tight deadlines?</span>
+        <span class="qa-tag p-high priority">High</span>
+      </div>
+      <div class="qa-answer">
+        <div class="sample">I break the work into smaller deliverables and prioritize ruthlessly. When I was building Loyalty Lock for submission, I had limited time, so I mapped out the minimum viable version — the core prediction model and a basic dashboard — and built that first. Once the core was working, I added visual polish and additional features.<br><br>
+        I also communicate proactively. If I am behind, I say so early rather than surprising people at the deadline. During my internship, I flagged a data quality issue two days before the demo, which gave the team time to prepare a workaround.<br><br>
+        Pressure is manageable when the work is broken down and communication is clear.</div>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <div class="qa-q" onclick="toggleQA(this)">
+        <span class="qa-num">HR6</span>
+        <span class="qa-text">Do you have any questions for us?</span>
+        <span class="qa-tag p-high priority">Always Ask</span>
+      </div>
+      <div class="qa-answer">
+        Always ask questions — it shows genuine interest. Good questions to ask:<br><br>
+        1. "What does the typical first 90 days look like for an Associate Solution Consultant joining Caelius?"<br>
+        2. "What Salesforce certifications does Caelius support or sponsor for new joiners?"<br>
+        3. "What does a typical client engagement look like — how long are projects, and how large are the teams?"<br>
+        4. "What is the most common technical challenge that Caelius's solutions address for clients?"<br><br>
+        Avoid asking about salary or leaves in the first round. Ask those in HR discussions.
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+function toggle(header) {
+  const body = header.nextElementSibling;
+  const chevron = header.querySelector('.chevron');
+  body.classList.toggle('open');
+  chevron.classList.toggle('open');
+}
+function toggleQA(qEl) {
+  const answer = qEl.nextElementSibling;
+  answer.classList.toggle('open');
+}
+function setActive(el) {
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  el.classList.add('active');
+}
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  document.getElementById('progress').style.transform = `scaleX(${scrolled})`;
+  const sections = document.querySelectorAll('section[id]');
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if (top < 120) {
+      const id = sec.id;
+      document.querySelectorAll('.nav-item').forEach(n => {
+        n.classList.toggle('active', n.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>
